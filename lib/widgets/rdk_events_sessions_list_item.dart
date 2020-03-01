@@ -27,7 +27,7 @@ class RdkEventsSessionsListItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10.0),
       child: SizedBox(
-        height: 150.0,
+        height: 130.0,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -37,7 +37,36 @@ class RdkEventsSessionsListItem extends StatelessWidget {
                 elevation: 5.0,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(5.0),
-                  child: Image.asset('assets/images/rdk-logo.jpg'),
+                  child: Stack(
+                    children: [
+                      Image.asset(
+                        'assets/images/rdk-logo.jpg',
+                        width: 100.0,
+                      ),
+                      Container(
+                        width: 100.0,
+                        child: Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              gradient: new LinearGradient(
+                                  colors: [Colors.white, Colors.blue],
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter),
+                            ),
+                            alignment: Alignment.center,
+                            width: 105.0,
+                            height: 20.0,
+                            child: Text(
+                              'рдк',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 15.0),
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),

@@ -4,7 +4,7 @@ import 'package:len_afisha/pages/home.dart';
 import 'package:len_afisha/pages/information.dart';
 import 'package:len_afisha/pages/movie_detail.dart';
 import 'package:len_afisha/pages/movie_poster.dart';
-import 'package:len_afisha/pages/movies_sessions.dart';
+// import 'package:len_afisha/pages/movies_sessions.dart';
 import 'package:len_afisha/pages/overview.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
@@ -25,12 +25,12 @@ class MyApp extends StatelessWidget {
               settings: settings,
             );
             break;
-          case MoviesSessionsPage.routName:
-            return MaterialPageRoute(
-              builder: (ctx) => MoviesSessionsPage(),
-              settings: settings,
-            );
-            break;
+          // case MoviesSessionsPage.routName:
+          //   return MaterialPageRoute(
+          //     builder: (ctx) => MoviesSessionsPage(),
+          //     settings: settings,
+          //   );
+            // break;
           case MovieDetailPage.routName:
             return PageTransition(
               child: MovieDetailPage(),

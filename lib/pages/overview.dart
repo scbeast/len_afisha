@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:len_afisha/models/events.dart';
 import 'package:len_afisha/pages/home.dart';
 import 'package:len_afisha/widgets/carousel_slider_movie-posters.dart';
+import 'package:len_afisha/widgets/i_am_busy_now.dart';
 import 'package:len_afisha/widgets/overview_page_main_events_section.dart';
 import 'package:provider/provider.dart';
 
@@ -42,9 +43,7 @@ class _OverviewPageState extends State<OverviewPage> {
       body: Consumer<EventsData>(
         builder: (context, eventsData, child) {
           if (eventsData.iAmBusyNow) {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
+            return IAmBusyNowIndicator();
           } else {
             return BuildOverviewPageBody(eventsData: eventsData);
           }

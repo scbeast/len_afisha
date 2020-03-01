@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:len_afisha/models/events.dart';
 import 'package:len_afisha/pages/information.dart';
+import 'package:provider/provider.dart';
 
 class BuildOverviewPageDrawer extends StatelessWidget {
   const BuildOverviewPageDrawer({Key key}) : super(key: key);
@@ -32,6 +34,8 @@ class BuildOverviewPageDrawer extends StatelessWidget {
             ),
             onTap: () {
               Navigator.pop(context);
+              EventsData().iAmBusyNow = true;
+              Provider.of<EventsData>(context, listen: false).fetchEventsData();
             },
           ),
           Divider(),

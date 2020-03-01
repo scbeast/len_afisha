@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:len_afisha/pages/information.dart';
 import 'package:len_afisha/pages/rdk_sessions.dart';
 import 'package:len_afisha/pages/kids_sessions.dart';
 import 'package:len_afisha/pages/movies_sessions.dart';
@@ -45,12 +46,16 @@ class _HomePageState extends State<HomePage>
     );
   }
 
-  void onPageChanged(int page) {
+  void _onPageChanged(int page) {
     setState(
       () {
         this._selectedPage = page;
       },
     );
+  }
+
+  void _refreshEventsData() {
+    print('Refreshing data');
   }
 
   @override
@@ -75,7 +80,7 @@ class _HomePageState extends State<HomePage>
         onTap: _onItemTapped,
         currentIndex: _selectedPage,
       ),
-      drawer: BuildOverviewPageDrawer(),
+      drawer: _buildSideDrawer(),
       appBar: AppBar(
         title: Text(
           'афиша рдк',
@@ -86,8 +91,57 @@ class _HomePageState extends State<HomePage>
       ),
       body: PageView(
         children: _pages,
-        onPageChanged: onPageChanged,
+        onPageChanged: _onPageChanged,
         controller: _pageController,
+      ),
+    );
+  }
+
+  Widget _buildSideDrawer() {
+    return Drawer(
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: <Widget>[
+          DrawerHeader(
+            decoration: BoxDecoration(
+              color: Colors.blue,
+            ),
+            child: Text(
+              'афиша рдк',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 24,
+              ),
+            ),
+          ),
+          ListTile(
+            leading: Icon(Icons.update),
+            title: Text(
+              'обновить данные',
+              style: TextStyle(
+                fontSize: 16,
+              ),
+            ),
+            onTap: () {
+              Navigator.pop(context);
+              _refreshEventsData();
+            },
+          ),
+          Divider(),
+          ListTile(
+            leading: Icon(Icons.info),
+            title: Text(
+              'информация',
+              style: TextStyle(
+                fontSize: 16,
+              ),
+            ),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.pushNamed(context, InformationPage.routName);
+            },
+          ),
+        ],
       ),
     );
   }

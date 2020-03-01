@@ -120,8 +120,8 @@ class EventsData with ChangeNotifier {
 // Получаем данные с сервера
   Future<void> fetchEventsData() async {
     const String url = 'https://api.npoint.io/677b0e848d129c690d14';
+
     try {
-      iAmBusyNow = true;
       final response = await http.get(url);
       addEventsDataFromJson(jsonDecode(response.body));
 
@@ -181,7 +181,7 @@ class EventsData with ChangeNotifier {
       notifyListeners();
     } catch (error) {
 // TODO: Добавить обработчик ошибки.
-            print(error.toString());
+      print(error.toString());
     }
   }
 
