@@ -15,13 +15,13 @@ class CarouselSliderMoviePosters extends StatelessWidget {
       height: MediaQuery.of(context).size.height / 3.0,
       // aspectRatio: 16/9,
       autoPlay: true,
-      autoPlayInterval: Duration(seconds: 3),
+      autoPlayInterval: const Duration(seconds: 3),
       enlargeCenterPage: true,
-      pauseAutoPlayOnTouch: Duration(seconds: 1),
+      pauseAutoPlayOnTouch: const Duration(seconds: 1),
       items: _imgList.map(
         (url) {
           return Container(
-            margin: EdgeInsets.symmetric(horizontal: 8.0),
+            margin: const EdgeInsets.symmetric(horizontal: 8.0),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(8.0),
               child: FadeInImage.assetNetwork(

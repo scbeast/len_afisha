@@ -16,8 +16,8 @@ class KidsEventSession {
       this.differenceInMinutes});
 
       KidsEventSession.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    dateTime = DateTime.parse(json['dateTime']);
+    id = json['id'] as String;
+    dateTime = DateTime.parse(json['dateTime'] as String);
     weekDay = constants.weekDays[dateTime.weekday - 1];
     month = constants.months[dateTime.month - 1];
     differenceInMinutes = dateTime.difference(_today).inMinutes;

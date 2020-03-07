@@ -3,6 +3,7 @@ class RdkEvent {
   String title;
   String synopsis;
   String duration;
+  String posterUrl;
   int ageRating;
 
   RdkEvent({
@@ -11,12 +12,14 @@ class RdkEvent {
     this.synopsis,
     this.duration,
     this.ageRating,
+    this.posterUrl,
   });
   RdkEvent.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    title = json['title'];
-    synopsis = json['synopsis'];
-    duration = json['duration'];
-    ageRating = json['age'];
+    id = json['id'] as String;
+    title = json['title'] as String;
+    synopsis = json['synopsis'] as String;
+    duration = json['duration'] as String;
+    posterUrl = json['posterUrl'] as String;
+    ageRating = json['age'] as int;
   }
 }

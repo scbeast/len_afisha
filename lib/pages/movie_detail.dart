@@ -8,35 +8,33 @@ class MovieDetailPage extends StatelessWidget {
   const MovieDetailPage({Key key}) : super(key: key);
 
   Widget build(BuildContext context) {
-    final Movie movie = ModalRoute.of(context).settings.arguments;
-    return SafeArea(
-      child: Material(
-        child: CustomScrollView(
-          slivers: [
-            SliverPersistentHeader(
-              delegate: MovieDetailPageSliverAppBar(
-                  expandedHeight: 200, movie: movie),
-              pinned: true,
+    final Movie _movie = ModalRoute.of(context).settings.arguments as Movie;
+    return Material(
+      child: CustomScrollView(
+        slivers: [
+          SliverPersistentHeader(
+            delegate: MovieDetailPageSliverAppBar(
+                expandedHeight: 200, movie: _movie),
+            pinned: true,
+          ),
+          SliverToBoxAdapter(
+            child: MovieDetailCard(
+              moviePosterUrl: _movie.posterUrl,
+              movieTitle: _movie.title,
+              movieGenre: _movie.genre,
+              movieCountry: _movie.country,
+              movieYear: _movie.year,
+              movieAgeRating: _movie.ageRating.toString(),
+              movieDuration: _movie.duration,
+              movieKpRatingUrl: _movie.rating,
+              movieSynopsis: _movie.synopsis,
+              movieImdbRating: _movie.imdbRating,
+              movieImdbRatingNumberOfVotes: _movie.imdbRatingNumberOfVotes,
+              movieKpRating: _movie.kpRating,
+              movieKpRatingNumberOfVotes: _movie.kpRatingNumberOfVotes,
             ),
-            SliverToBoxAdapter(
-              child: MovieDetailCard(
-                moviePosterUrl: movie.posterUrl,
-                movieTitle: movie.title,
-                movieGenre: movie.genre,
-                movieCountry: movie.country,
-                movieYear: movie.year,
-                movieAgeRating: movie.ageRating.toString(),
-                movieDuration: movie.duration,
-                movieKpRatingUrl: movie.rating,
-                movieSynopsis: movie.synopsis,
-                movieImdbRating: movie.imdbRating,
-                movieImdbRatingNumberOfVotes: movie.imdbRatingNumberOfVotes,
-                movieKpRating: movie.kpRating,
-                movieKpRatingNumberOfVotes: movie.kpRatingNumberOfVotes,
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

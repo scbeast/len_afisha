@@ -20,15 +20,17 @@ class EventsData with ChangeNotifier {
   List<RdkEventSession> rdkEventsSessions;
 
   bool iAmBusyNow = true;
+  bool oops = false;
+  bool _afterInit = false;
 
   EventsData({this.movies, this.moviesSessions, this.announcements});
 
   void addMoviesFromJson(Map<String, dynamic> json) {
     if (json['movies'] != null) {
-      movies = new List<Movie>();
+      movies = List<Movie>();
       json['movies'].forEach(
         (v) {
-          movies.add(new Movie.fromJson(v));
+          movies.add(Movie.fromJson(v as Map<String, dynamic>));
         },
       );
     }
@@ -36,10 +38,10 @@ class EventsData with ChangeNotifier {
 
   void addRdkEventsFromJson(Map<String, dynamic> json) {
     if (json['rdkEvents'] != null) {
-      rdkEvents = new List<RdkEvent>();
+      rdkEvents = List<RdkEvent>();
       json['rdkEvents'].forEach(
         (v) {
-          rdkEvents.add(new RdkEvent.fromJson(v));
+          rdkEvents.add(RdkEvent.fromJson(v as Map<String, dynamic>));
         },
       );
     }
@@ -47,10 +49,10 @@ class EventsData with ChangeNotifier {
 
   void addKidsEventsFromJson(Map<String, dynamic> json) {
     if (json['kidsEvents'] != null) {
-      kidsEvents = new List<KidsEvent>();
+      kidsEvents = List<KidsEvent>();
       json['kidsEvents'].forEach(
         (v) {
-          kidsEvents.add(new KidsEvent.fromJson(v));
+          kidsEvents.add(KidsEvent.fromJson(v as Map<String, dynamic>));
         },
       );
     }
@@ -58,10 +60,10 @@ class EventsData with ChangeNotifier {
 
   void addAnnouncementsFromJson(Map<String, dynamic> json) {
     if (json['announcements'] != null) {
-      announcements = new List<Announcement>();
+      announcements = List<Announcement>();
       json['announcements'].forEach(
         (v) {
-          announcements.add(new Announcement.fromJson(v));
+          announcements.add(Announcement.fromJson(v as Map<String, dynamic>));
         },
       );
     }
@@ -69,11 +71,14 @@ class EventsData with ChangeNotifier {
 
   void addMoviesSessionsFromJson(Map<String, dynamic> json) {
     if (json['moviesSessions'] != null) {
-      moviesSessions = new List<MovieSession>();
+      moviesSessions = List<MovieSession>();
       json['moviesSessions'].forEach(
         (v) {
-          if (MovieSession.fromJson(v).differenceInMinutes >= -1) {
-            moviesSessions.add(new MovieSession.fromJson(v));
+          if (MovieSession.fromJson(v as Map<String, dynamic>)
+                  .differenceInMinutes >=
+              -1) {
+            moviesSessions
+                .add(MovieSession.fromJson(v as Map<String, dynamic>));
           }
         },
       );
@@ -82,11 +87,14 @@ class EventsData with ChangeNotifier {
 
   void addKidsEventsSessionsFromJson(Map<String, dynamic> json) {
     if (json['kidsSessions'] != null) {
-      kidsEventsSessions = new List<KidsEventSession>();
+      kidsEventsSessions = List<KidsEventSession>();
       json['kidsSessions'].forEach(
         (v) {
-          if (KidsEventSession.fromJson(v).differenceInMinutes >= -1) {
-            kidsEventsSessions.add(new KidsEventSession.fromJson(v));
+          if (KidsEventSession.fromJson(v as Map<String, dynamic>)
+                  .differenceInMinutes >=
+              -1) {
+            kidsEventsSessions
+                .add(KidsEventSession.fromJson(v as Map<String, dynamic>));
           }
         },
       );
@@ -95,15 +103,71 @@ class EventsData with ChangeNotifier {
 
   void addRdkEventsSessionsFromJson(Map<String, dynamic> json) {
     if (json['rdkSessions'] != null) {
-      rdkEventsSessions = new List<RdkEventSession>();
+      rdkEventsSessions = List<RdkEventSession>();
       json['rdkSessions'].forEach(
         (v) {
-          if (RdkEventSession.fromJson(v).differenceInMinutes >= -1) {
-            rdkEventsSessions.add(new RdkEventSession.fromJson(v));
+          if (RdkEventSession.fromJson(v as Map<String, dynamic>)
+                  .differenceInMinutes >=
+              -1) {
+            rdkEventsSessions
+                .add(RdkEventSession.fromJson(v as Map<String, dynamic>));
           }
         },
       );
     }
+  }
+
+  void _getMoviesRatings() {
+    movies.forEach(
+      (f) async {
+        try {
+          final Xml2Json myTransformer = Xml2Json();
+          final movieRatingJson = await http.get(f.ratingUrl);
+          myTransformer.parse(movieRatingJson.body);
+          final _json = jsonDecode(myTransformer.toGData());
+          try {
+            if (_json['rating']['imdb_rating']['num_vote'] == '0') {
+              f.imdbRatingNumberOfVotes = '-';
+            } else {
+              f.imdbRatingNumberOfVotes =
+                  _json['rating']['imdb_rating']['num_vote'] as String;
+            }
+          } catch (e) {
+            f.imdbRatingNumberOfVotes = '-';
+          }
+          try {
+            if (_json['rating']['imdb_rating']['\$t'] == '0') {
+              f.imdbRating = '-';
+            } else {
+              f.imdbRating = _json['rating']['imdb_rating']['\$t'] as String;
+            }
+          } catch (e) {
+            f.imdbRating = '-';
+          }
+          try {
+            if (_json['rating']['kp_rating']['num_vote'] == '0') {
+              f.kpRatingNumberOfVotes = '-';
+            } else {
+              f.kpRatingNumberOfVotes =
+                  _json['rating']['kp_rating']['num_vote'] as String;
+            }
+          } catch (e) {
+            f.kpRatingNumberOfVotes = '-';
+          }
+          try {
+            if (_json['rating']['kp_rating']['\$t'] == '0') {
+              f.kpRating = '-';
+            } else {
+              f.kpRating = _json['rating']['kp_rating']['\$t'] as String;
+            }
+          } catch (e) {
+            f.kpRating = '-';
+          }
+        } catch (error) {
+          oops = true; //если ошибка
+        }
+      },
+    );
   }
 
   void addEventsDataFromJson(Map<String, dynamic> json) {
@@ -120,68 +184,25 @@ class EventsData with ChangeNotifier {
 // Получаем данные с сервера
   Future<void> fetchEventsData() async {
     const String url = 'https://api.npoint.io/677b0e848d129c690d14';
-
+    if (_afterInit) {
+      iAmBusyNow = true;
+      notifyListeners();
+    }
+    _afterInit = true;
     try {
       final response = await http.get(url);
-      addEventsDataFromJson(jsonDecode(response.body));
+      if (response.statusCode != 200) {
+        oops = true;
+      } else {
+        addEventsDataFromJson(
+            jsonDecode(response.body) as Map<String, dynamic>);
 
-// Подтягиваем рейтинги для каждого фильма
-      movies.forEach(
-        (f) async {
-          try {
-            final Xml2Json myTransformer = Xml2Json();
-            final movieRatingJson = await http.get(f.ratingUrl);
-            myTransformer.parse(movieRatingJson.body);
-            final _json = jsonDecode(myTransformer.toGData());
-            try {
-              if (_json['rating']['imdb_rating']['num_vote'] == '0') {
-                f.imdbRatingNumberOfVotes = '-';
-              } else {
-                f.imdbRatingNumberOfVotes =
-                    _json['rating']['imdb_rating']['num_vote'];
-              }
-            } catch (e) {
-              f.imdbRatingNumberOfVotes = '-';
-            }
-            try {
-              if (_json['rating']['imdb_rating']['\$t'] == '0') {
-                f.imdbRating = '-';
-              } else {
-                f.imdbRating = _json['rating']['imdb_rating']['\$t'];
-              }
-            } catch (e) {
-              f.imdbRating = '-';
-            }
-            try {
-              if (_json['rating']['kp_rating']['num_vote'] == '0') {
-                f.kpRatingNumberOfVotes = '-';
-              } else {
-                f.kpRatingNumberOfVotes =
-                    _json['rating']['kp_rating']['num_vote'];
-              }
-            } catch (e) {
-              f.kpRatingNumberOfVotes = '-';
-            }
-            try {
-              if (_json['rating']['kp_rating']['\$t'] == '0') {
-                f.kpRating = '-';
-              } else {
-                f.kpRating = _json['rating']['kp_rating']['\$t'];
-              }
-            } catch (e) {
-              f.kpRating = '-';
-            }
-          } catch (error) {
-// TODO: Добавить обработчик ошибки.
-            print(error.toString());
-          }
-        },
-      );
-      iAmBusyNow = false;
-      notifyListeners();
+        _getMoviesRatings(); // Подтягиваем рейтинги для каждого фильма
+        iAmBusyNow = false;
+        notifyListeners();
+      }
     } catch (error) {
-// TODO: Добавить обработчик ошибки.
-      print(error.toString());
+      oops = true; //если ошибка
     }
   }
 

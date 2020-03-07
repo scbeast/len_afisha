@@ -12,9 +12,9 @@ class Announcement {
   });
 
   Announcement.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    title = json['title'];
-    subtitle = json['subtitle'];
-    synopsis = json['synopsis'];
+    id = json['id'] as String;
+    title = json['title'] as String;
+    subtitle = json['subtitle'] as String;
+    synopsis = json['synopsis'] as String;
   }
 }

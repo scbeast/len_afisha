@@ -2,24 +2,26 @@ import 'package:flutter/material.dart';
 
 class KidsSessionsListItem extends StatelessWidget {
   final String kidsEventTitle;
-  final String kidsEventSynopsis;
+  // final String kidsEventSynopsis;
   final String kidsEventDuration;
   final String kidsEventAgeRating;
   final String kidsEventDay;
   final String kidsEventWeekDay;
   final String kidsEventMonth;
   final String kidsEventTime;
+  final String kidsEventPosterUrl;
 
   KidsSessionsListItem(
       {Key key,
-      this.kidsEventTitle,
-      this.kidsEventSynopsis,
-      this.kidsEventDuration,
-      this.kidsEventAgeRating,
-      this.kidsEventDay,
-      this.kidsEventWeekDay,
-      this.kidsEventMonth,
-      this.kidsEventTime})
+      @required this.kidsEventTitle,
+      // @required this.kidsEventSynopsis,
+      @required this.kidsEventDuration,
+      @required this.kidsEventAgeRating,
+      @required this.kidsEventDay,
+      @required this.kidsEventWeekDay,
+      @required this.kidsEventMonth,
+      @required this.kidsEventTime,
+      @required this.kidsEventPosterUrl})
       : super(key: key);
 
   @override
@@ -39,28 +41,33 @@ class KidsSessionsListItem extends StatelessWidget {
                   borderRadius: BorderRadius.circular(5.0),
                   child: Stack(
                     children: [
-                      Image.asset(
-                        'assets/images/rdk-logo.jpg',
+                      FadeInImage.assetNetwork(
+                        placeholder: 'assets/images/wait-poster.gif',
+                        image: kidsEventPosterUrl,
                         width: 100.0,
                       ),
-                      Container(
-                        width: 100.0,
-                        child: Align(
-                          alignment: Alignment.bottomCenter,
-                          child: Container(
-                            decoration: BoxDecoration(
-                              gradient: new LinearGradient(
-                                  colors: [Colors.white, Colors.blue],
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter),
-                            ),
-                            alignment: Alignment.center,
-                            width: 105.0,
-                            height: 20.0,
-                            child: Text(
-                              'детям',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 15.0),
+                      Opacity(
+                        opacity: 0.8,
+                        child: Container(
+                          width: 100.0,
+                          child: Align(
+                            alignment: Alignment.bottomCenter,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                    colors: [Colors.white, Colors.blue],
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter),
+                              ),
+                              alignment: Alignment.center,
+                              width: 105.0,
+                              height: 20.0,
+                              child: const Text(
+                                'детям',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 15.0),
+                              ),
                             ),
                           ),
                         ),
@@ -112,7 +119,7 @@ class KidsSessionsListItem extends StatelessWidget {
                               fontSize: 14.0,
                             ),
                           ),
-                          Divider(),
+                          const Divider(),
                           const Padding(padding: EdgeInsets.only(bottom: 2.0)),
                           Text(
                             ' · $kidsEventAgeRating+',

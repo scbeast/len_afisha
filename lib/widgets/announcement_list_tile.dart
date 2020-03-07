@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
 
-class OverviewPageAnnouncementsSection extends StatelessWidget {
-  const OverviewPageAnnouncementsSection({
-    Key key,
-    @required String announcementTitle,
-    @required String announcementSubtitle,
-    @required String announcementSynopsis,
-  })  : announcementTitle = announcementTitle,
-        announcementSubtitle = announcementSubtitle,
-        announcementSynopsis = announcementSynopsis,
-        super(key: key);
-
+class AnnouncementsListTile extends StatelessWidget {
   final String announcementTitle;
   final String announcementSubtitle;
   final String announcementSynopsis;
+
+  const AnnouncementsListTile({
+    Key key,
+    @required this.announcementTitle,
+    @required this.announcementSubtitle,
+    @required this.announcementSynopsis,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +22,7 @@ class OverviewPageAnnouncementsSection extends StatelessWidget {
           const Padding(padding: EdgeInsets.only(bottom: 2.0)),
           Text(
             '$announcementTitle',
-            maxLines: 1,
+            maxLines: 2,
             overflow: TextOverflow.ellipsis,
             style: const TextStyle(
               fontSize: 14.0,
@@ -52,7 +49,7 @@ class OverviewPageAnnouncementsSection extends StatelessWidget {
             softWrap: true,
             textAlign: TextAlign.justify,
           ),
-          Divider(),
+          const Divider(),
         ],
       ),
     );

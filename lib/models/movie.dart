@@ -28,32 +28,32 @@ class Movie {
       this.rating});
 
   Movie.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    title = json['title'];
-    country = json['country'];
-    year = json['year'];
-    genre = json['genre'];
-    synopsis = json['synopsis'];
-    duration = json['duration'];
-    ageRating = json['age'];
-    posterUrl = json['posterUrl'];
-    ratingUrl = json['ratingUrl'];
-    rating = json['rating'];
+    id = json['id'] as String;
+    title = json['title'] as String;
+    country = json['country'] as String;
+    year = json['year'] as String;
+    genre = json['genre'] as String;
+    synopsis = json['synopsis'] as String;
+    duration = json['duration'] as String;
+    ageRating = json['age'] as int;
+    posterUrl = json['posterUrl'] as String;
+    ratingUrl = json['ratingUrl'] as String;
+    rating = json['rating'] as String;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['title'] = this.title;
-    data['country'] = this.country;
-    data['year'] = this.year;
-    data['genre'] = this.genre;
-    data['synopsis'] = this.synopsis;
-    data['duration'] = this.duration;
-    data['age'] = this.ageRating;
-    data['posterUrl'] = this.posterUrl;
-    data['ratingUrl'] = this.ratingUrl;
-    data['rating'] = this.rating;
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['id'] = id;
+    data['title'] = title;
+    data['country'] = country;
+    data['year'] = year;
+    data['genre'] = genre;
+    data['synopsis'] = synopsis;
+    data['duration'] = duration;
+    data['age'] = ageRating;
+    data['posterUrl'] = posterUrl;
+    data['ratingUrl'] = ratingUrl;
+    data['rating'] = rating;
     return data;
   }
 }

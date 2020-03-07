@@ -3,7 +3,9 @@ import 'package:len_afisha/models/movie_session.dart';
 import 'package:len_afisha/pages/movie_detail.dart';
 import 'package:len_afisha/models/events.dart';
 import 'package:len_afisha/widgets/empty_events_list.dart';
+import 'package:len_afisha/widgets/i_am_busy_now.dart';
 import 'package:len_afisha/widgets/movie_list_item.dart';
+import 'package:len_afisha/widgets/oops_dialog.dart';
 import 'package:provider/provider.dart';
 
 class MoviesSessionsPage extends StatelessWidget {
@@ -13,28 +15,29 @@ class MoviesSessionsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<EventsData>(
-      builder: (context, eventsData, child) {
-        return BuildMoviesSessionsListView(eventsData: eventsData);
+      builder: (context, eventsData, _) {
+        if (eventsData.iAmBusyNow) {
+          return const IAmBusyNowIndicator();
+        } else if (eventsData.oops) {
+          return const OopsDialog();
+        } else {
+          return const BuildMoviesSessionsListView();
+        }
       },
     );
   }
 }
 
 class BuildMoviesSessionsListView extends StatelessWidget {
-  const BuildMoviesSessionsListView({
-    Key key,
-    @required EventsData eventsData,
-  })  : _eventsData = eventsData,
-        super(key: key);
-
-  final EventsData _eventsData;
+  const BuildMoviesSessionsListView({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final EventsData _eventsData = Provider.of<EventsData>(context);
     final List<MovieSession> _sessions = _eventsData.moviesSessions;
     final int _listViewLength = _sessions.length;
     if (_listViewLength == 0) {
-      return EmptyEventsListWidget();
+      return const EmptyEventsListWidget();
     } else {
       return ListView.builder(
         itemCount: _listViewLength,

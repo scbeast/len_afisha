@@ -51,8 +51,8 @@ class MovieDetailCard extends StatelessWidget {
                   fontSize: 20.0,
                 ),
               ),
-              Divider(),
-              Padding(padding: EdgeInsets.only(bottom: 2.0)),
+              const Divider(),
+              const Padding(padding: EdgeInsets.only(bottom: 2.0)),
               Text(
                 '· $movieCountry',
                 maxLines: 2,
@@ -63,7 +63,7 @@ class MovieDetailCard extends StatelessWidget {
                   color: Colors.black54,
                 ),
               ),
-              Padding(padding: EdgeInsets.only(bottom: 2.0)),
+              const Padding(padding: EdgeInsets.only(bottom: 2.0)),
               Text(
                 '· $movieYear',
                 maxLines: 2,
@@ -74,7 +74,7 @@ class MovieDetailCard extends StatelessWidget {
                   color: Colors.black54,
                 ),
               ),
-              Padding(padding: EdgeInsets.only(bottom: 2.0)),
+              const Padding(padding: EdgeInsets.only(bottom: 2.0)),
               Text(
                 '· $movieAgeRating+',
                 maxLines: 2,
@@ -85,7 +85,7 @@ class MovieDetailCard extends StatelessWidget {
                   color: Colors.black54,
                 ),
               ),
-              Padding(padding: EdgeInsets.only(bottom: 2.0)),
+              const Padding(padding: EdgeInsets.only(bottom: 2.0)),
             ],
           ),
         ),
@@ -104,7 +104,7 @@ class MovieDetailCard extends StatelessWidget {
                   color: Colors.black54,
                 ),
               ),
-              Padding(padding: EdgeInsets.only(bottom: 2.0)),
+              const Padding(padding: EdgeInsets.only(bottom: 2.0)),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -125,8 +125,9 @@ class MovieDetailCard extends StatelessWidget {
                   ),
                 ],
               ),
-              Padding(padding: EdgeInsets.only(bottom: 1.0)),
-              Row(crossAxisAlignment: CrossAxisAlignment.end,
+              const Padding(padding: EdgeInsets.only(bottom: 1.0)),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: <Widget>[
                   Text(
                     '★ кп $movieKpRating',
@@ -135,7 +136,8 @@ class MovieDetailCard extends StatelessWidget {
                       fontSize: 16.0,
                       color: Colors.black54,
                     ),
-                  ),Text(
+                  ),
+                  Text(
                     '/$movieKpRatingNumberOfVotes/ ',
                     style: TextStyle(
                       fontWeight: FontWeight.normal,
@@ -150,7 +152,8 @@ class MovieDetailCard extends StatelessWidget {
                       fontSize: 16.0,
                       color: Colors.black54,
                     ),
-                  ),Text(
+                  ),
+                  Text(
                     '/$movieImdbRatingNumberOfVotes/ ',
                     style: TextStyle(
                       fontWeight: FontWeight.normal,
@@ -160,7 +163,7 @@ class MovieDetailCard extends StatelessWidget {
                   ),
                 ],
               ),
-              Padding(padding: EdgeInsets.only(bottom: 8.0)),
+              const Padding(padding: EdgeInsets.only(bottom: 8.0)),
               Text(
                 '   $movieSynopsis',
                 style: TextStyle(
@@ -171,7 +174,7 @@ class MovieDetailCard extends StatelessWidget {
                 softWrap: true,
                 textAlign: TextAlign.justify,
               ),
-              Divider(),
+              const Divider(),
             ],
           ),
         ),

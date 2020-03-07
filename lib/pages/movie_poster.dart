@@ -7,7 +7,7 @@ class MoviePosterPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String moviePosterUrl = ModalRoute.of(context).settings.arguments;
+    final String moviePosterUrl = ModalRoute.of(context).settings.arguments as String;
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(

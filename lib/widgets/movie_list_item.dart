@@ -67,7 +67,7 @@ class MovieListTile extends StatelessWidget {
                   fontSize: 14.0,
                 ),
               ),
-              Divider(),
+              const Divider(),
               Text(
                 ' · $movieCountry',
                 maxLines: 1,

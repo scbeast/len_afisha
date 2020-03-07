@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:len_afisha/models/events.dart';
 import 'package:len_afisha/models/rdk_event_session.dart';
+import 'package:len_afisha/pages/rdk_events_detail.dart';
 import 'package:len_afisha/widgets/empty_events_list.dart';
 import 'package:len_afisha/widgets/i_am_busy_now.dart';
 import 'package:len_afisha/widgets/rdk_events_sessions_list_item.dart';
@@ -15,9 +16,9 @@ class RdkSessionsPage extends StatelessWidget {
     return Consumer<EventsData>(
       builder: (context, eventsData, child) {
         if (eventsData.iAmBusyNow) {
-          return IAmBusyNowIndicator();
+          return const IAmBusyNowIndicator();
         } else {
-          return BuildRdkSessionsListView(eventsData: eventsData);
+          return const BuildRdkSessionsListView();
         }
       },
     );
@@ -27,18 +28,15 @@ class RdkSessionsPage extends StatelessWidget {
 class BuildRdkSessionsListView extends StatelessWidget {
   const BuildRdkSessionsListView({
     Key key,
-    @required EventsData eventsData,
-  })  : _eventsData = eventsData,
-        super(key: key);
-
-  final EventsData _eventsData;
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final EventsData _eventsData = Provider.of<EventsData>(context);
     final List<RdkEventSession> _sessions = _eventsData.rdkEventsSessions;
     final int _listViewLength = _sessions.length;
     if (_listViewLength == 0) {
-      return EmptyEventsListWidget();
+      return const EmptyEventsListWidget();
     } else {
       return ListView.builder(
         itemCount: _listViewLength,
@@ -57,9 +55,16 @@ class BuildRdkSessionsListView extends StatelessWidget {
                     _sessions[index].dateTime.toString().substring(11, 16),
                 rdkEventDuration: _rdkEvent.duration,
                 rdkEventAgeRating: _rdkEvent.ageRating.toString(),
+                rdkEventPosterUrl: _rdkEvent.posterUrl,
               ),
             ),
-            onTap: () {},
+            onTap: () {
+              Navigator.pushNamed(
+                context,
+                RdkEventDetailPage.routName,
+                arguments: _rdkEvent,
+              );
+            },
           );
         },
       );
