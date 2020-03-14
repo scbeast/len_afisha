@@ -1,23 +1,6 @@
 import 'package:flutter/material.dart';
 
 class MovieDetailCard extends StatelessWidget {
-  const MovieDetailCard(
-      {Key key,
-      this.moviePosterUrl,
-      this.movieTitle,
-      this.movieGenre,
-      this.movieCountry,
-      this.movieYear,
-      this.movieAgeRating,
-      this.movieDuration,
-      this.movieKpRatingUrl,
-      this.movieSynopsis,
-      this.movieImdbRating,
-      this.movieImdbRatingNumberOfVotes,
-      this.movieKpRating,
-      this.movieKpRatingNumberOfVotes})
-      : super(key: key);
-
   final String moviePosterUrl;
   final String movieTitle;
   final String movieGenre;
@@ -32,6 +15,23 @@ class MovieDetailCard extends StatelessWidget {
   final String movieKpRating;
   final String movieImdbRating;
 
+  const MovieDetailCard(
+      {Key key,
+      @required this.moviePosterUrl,
+      @required this.movieTitle,
+      @required this.movieGenre,
+      @required this.movieCountry,
+      @required this.movieYear,
+      @required this.movieAgeRating,
+      @required this.movieDuration,
+      @required this.movieKpRatingUrl,
+      @required this.movieSynopsis,
+      @required this.movieImdbRating,
+      @required this.movieImdbRatingNumberOfVotes,
+      @required this.movieKpRating,
+      @required this.movieKpRatingNumberOfVotes})
+      : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -44,20 +44,20 @@ class MovieDetailCard extends StatelessWidget {
             children: <Widget>[
               Text(
                 '$movieTitle',
-                maxLines: 3,
+                maxLines: 1,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(
+                style: const TextStyle(
                   fontWeight: FontWeight.w900,
-                  fontSize: 20.0,
+                  fontSize: 18.0,
                 ),
               ),
-              const Divider(),
+              const Divider(color: Colors.blue),
               const Padding(padding: EdgeInsets.only(bottom: 2.0)),
               Text(
                 '· $movieCountry',
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(
+                style: const TextStyle(
                   fontWeight: FontWeight.normal,
                   fontSize: 18.0,
                   color: Colors.black54,
@@ -68,7 +68,7 @@ class MovieDetailCard extends StatelessWidget {
                 '· $movieYear',
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(
+                style: const TextStyle(
                   fontWeight: FontWeight.normal,
                   fontSize: 18.0,
                   color: Colors.black54,
@@ -77,9 +77,9 @@ class MovieDetailCard extends StatelessWidget {
               const Padding(padding: EdgeInsets.only(bottom: 2.0)),
               Text(
                 '· $movieAgeRating+',
-                maxLines: 2,
+                maxLines: 1,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(
+                style: const TextStyle(
                   fontWeight: FontWeight.normal,
                   fontSize: 16.0,
                   color: Colors.black54,
@@ -90,7 +90,7 @@ class MovieDetailCard extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(8.0, 32.0, 8.0, 8.0),
+          padding: const EdgeInsets.fromLTRB(12.0, 32.0, 12.0, 8.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -98,7 +98,7 @@ class MovieDetailCard extends StatelessWidget {
                 '· $movieGenre',
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(
+                style: const TextStyle(
                   fontWeight: FontWeight.normal,
                   fontSize: 16.0,
                   color: Colors.black54,
@@ -115,9 +115,9 @@ class MovieDetailCard extends StatelessWidget {
                   ),
                   Text(
                     ' $movieDuration',
-                    maxLines: 2,
+                    maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontWeight: FontWeight.normal,
                       fontSize: 16.0,
                       color: Colors.black54,
@@ -131,7 +131,7 @@ class MovieDetailCard extends StatelessWidget {
                 children: <Widget>[
                   Text(
                     '★ кп $movieKpRating',
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontWeight: FontWeight.normal,
                       fontSize: 16.0,
                       color: Colors.black54,
@@ -139,7 +139,7 @@ class MovieDetailCard extends StatelessWidget {
                   ),
                   Text(
                     '/$movieKpRatingNumberOfVotes/ ',
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontWeight: FontWeight.normal,
                       fontSize: 8.0,
                       color: Colors.black54,
@@ -147,7 +147,7 @@ class MovieDetailCard extends StatelessWidget {
                   ),
                   Text(
                     '★ imdb $movieImdbRating',
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontWeight: FontWeight.normal,
                       fontSize: 16.0,
                       color: Colors.black54,
@@ -155,7 +155,7 @@ class MovieDetailCard extends StatelessWidget {
                   ),
                   Text(
                     '/$movieImdbRatingNumberOfVotes/ ',
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontWeight: FontWeight.normal,
                       fontSize: 8.0,
                       color: Colors.black54,
@@ -163,18 +163,19 @@ class MovieDetailCard extends StatelessWidget {
                   ),
                 ],
               ),
-              const Padding(padding: EdgeInsets.only(bottom: 8.0)),
-              Text(
-                '   $movieSynopsis',
-                style: TextStyle(
-                  fontWeight: FontWeight.normal,
-                  fontSize: 16.0,
-                  color: Colors.black87,
+              Padding(
+                padding: const EdgeInsets.fromLTRB(12.0, 6.0, 12.0, 8.0),
+                child: Text(
+                  '   $movieSynopsis',
+                  style: const TextStyle(
+                    fontWeight: FontWeight.normal,
+                    fontSize: 16.0,
+                    color: Colors.black87,
+                  ),
+                  softWrap: true,
+                  textAlign: TextAlign.justify,
                 ),
-                softWrap: true,
-                textAlign: TextAlign.justify,
               ),
-              const Divider(),
             ],
           ),
         ),

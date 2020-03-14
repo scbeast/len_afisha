@@ -39,40 +39,10 @@ class KidsSessionsListItem extends StatelessWidget {
                 elevation: 5.0,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(5.0),
-                  child: Stack(
-                    children: [
-                      FadeInImage.assetNetwork(
-                        placeholder: 'assets/images/wait-poster.gif',
-                        image: kidsEventPosterUrl,
-                        width: 100.0,
-                      ),
-                      Opacity(
-                        opacity: 0.8,
-                        child: Container(
-                          width: 100.0,
-                          child: Align(
-                            alignment: Alignment.bottomCenter,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                    colors: [Colors.white, Colors.blue],
-                                    begin: Alignment.topCenter,
-                                    end: Alignment.bottomCenter),
-                              ),
-                              alignment: Alignment.center,
-                              width: 105.0,
-                              height: 20.0,
-                              child: const Text(
-                                'детям',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 15.0),
-                              ),
-                            ),
-                          ),
-                        ),
-                      )
-                    ],
+                  child: FadeInImage.assetNetwork(
+                    placeholder: 'assets/images/wait-poster.gif',
+                    image: kidsEventPosterUrl,
+                    width: 100.0,
                   ),
                 ),
               ),
@@ -119,7 +89,7 @@ class KidsSessionsListItem extends StatelessWidget {
                               fontSize: 14.0,
                             ),
                           ),
-                          const Divider(),
+                          const Divider(color: Colors.blue),
                           const Padding(padding: EdgeInsets.only(bottom: 2.0)),
                           Text(
                             ' · $kidsEventAgeRating+',

@@ -35,15 +35,14 @@ class BuildMoviesSessionsListView extends StatelessWidget {
   Widget build(BuildContext context) {
     final EventsData _eventsData = Provider.of<EventsData>(context);
     final List<MovieSession> _sessions = _eventsData.moviesSessions;
-    final int _listViewLength = _sessions.length;
-    if (_listViewLength == 0) {
+    if (_sessions.isEmpty) {
       return const EmptyEventsListWidget();
     } else {
       return ListView.builder(
-        itemCount: _listViewLength,
+        itemCount: _sessions.length,
         itemBuilder: (BuildContext context, int index) {
           final _movie = _eventsData.findMovieById(_sessions[index].id);
-          return InkWell(
+          return GestureDetector(
             child: Card(
               elevation: 5.0,
               child: MovieListItem(

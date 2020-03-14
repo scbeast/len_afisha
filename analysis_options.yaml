@@ -5,9 +5,9 @@ include: package:pedantic/analysis_options.yaml
 
 analyzer:
   exclude:
-    - 'example/**'
-    - 'build/**'
-    - '**.g.dart'
+    - "example/**"
+    - "build/**"
+    - "**.g.dart"
   strong-mode:
     implicit-casts: false
     implicit-dynamic: true
@@ -35,7 +35,7 @@ linter:
     prefer_mixin: false
 
     # true
-    valid_regexps: true    
+    valid_regexps: true
     unrelated_type_equality_checks: true
     no_logic_in_create_state: true
     no_duplicate_case_values: true
@@ -43,7 +43,7 @@ linter:
     prefer_if_null_operators: true
     prefer_initializing_formals: true
     type_annotate_public_apis: true
-    avoid_equals_and_hash_code_on_mutable_classes: true    
+    avoid_equals_and_hash_code_on_mutable_classes: true
     unnecessary_const: true
     avoid_shadowing_type_parameters: true
     prefer_final_fields: true

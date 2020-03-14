@@ -20,7 +20,7 @@ class EmptyEventsListWidget extends StatelessWidget {
         const Padding(
           padding: EdgeInsets.only(bottom: 10.0),
         ),
-        Text(
+        const Text(
           'Пока ничего нет.',
           style: TextStyle(
               fontWeight: FontWeight.bold, fontSize: 26.0, color: Colors.blue),

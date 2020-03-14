@@ -34,16 +34,14 @@ class BuildKidsSessionsListView extends StatelessWidget {
   Widget build(BuildContext context) {
     final EventsData _eventsData = Provider.of<EventsData>(context);
     final List<KidsEventSession> _sessions = _eventsData.kidsEventsSessions;
-    final int _listViewLength = _sessions.length;
-    if (_listViewLength == 0) {
+    if (_sessions.isEmpty) {
       return const EmptyEventsListWidget();
     } else {
       return ListView.builder(
-        itemCount: _listViewLength,
+        itemCount: _sessions.length,
         itemBuilder: (BuildContext context, int index) {
           final _kidsEvent = _eventsData.findKidsEventById(_sessions[index].id);
-          return InkWell(
-            splashColor: Colors.white,
+          return GestureDetector(
             child: Card(
               elevation: 5.0,
               child: KidsSessionsListItem(

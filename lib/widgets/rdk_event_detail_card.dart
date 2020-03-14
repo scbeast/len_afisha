@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 
 class RdkEventDetailCard extends StatelessWidget {
-  const RdkEventDetailCard({
-    Key key,
-    this.rdkEventPosterUrl,
-    this.rdkEventTitle,
-    this.rdkEventAgeRating,
-    this.rdkEventDuration,
-    this.rdkEventSynopsis,
-  }) : super(key: key);
-
   final String rdkEventPosterUrl;
   final String rdkEventTitle;
   final String rdkEventAgeRating;
   final String rdkEventDuration;
   final String rdkEventSynopsis;
+
+  const RdkEventDetailCard({
+    Key key,
+    @required this.rdkEventPosterUrl,
+    @required this.rdkEventTitle,
+    @required this.rdkEventAgeRating,
+    @required this.rdkEventDuration,
+    @required this.rdkEventSynopsis,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,11 +28,11 @@ class RdkEventDetailCard extends StatelessWidget {
             children: <Widget>[
               Text(
                 '$rdkEventTitle',
-                maxLines: 3,
+                maxLines: 2,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(
+                style: const TextStyle(
                   fontWeight: FontWeight.w900,
-                  fontSize: 20.0,
+                  fontSize: 18.0,
                 ),
               ),
               const Divider(),
@@ -41,7 +41,7 @@ class RdkEventDetailCard extends StatelessWidget {
                 '· $rdkEventAgeRating+',
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(
+                style: const TextStyle(
                   fontWeight: FontWeight.normal,
                   fontSize: 16.0,
                   color: Colors.black54,
@@ -60,7 +60,7 @@ class RdkEventDetailCard extends StatelessWidget {
                     ' $rdkEventDuration',
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontWeight: FontWeight.normal,
                       fontSize: 16.0,
                       color: Colors.black54,
@@ -72,23 +72,16 @@ class RdkEventDetailCard extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(8.0, 32.0, 8.0, 8.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              const Padding(padding: EdgeInsets.only(bottom: 20.0)),
-              Text(
-                '   $rdkEventSynopsis',
-                style: TextStyle(
-                  fontWeight: FontWeight.normal,
-                  fontSize: 16.0,
-                  color: Colors.black87,
-                ),
-                softWrap: true,
-                textAlign: TextAlign.justify,
-              ),
-              const Divider(),
-            ],
+          padding: const EdgeInsets.fromLTRB(24.0, 42.0, 24.0, 8.0),
+          child: Text(
+            '   $rdkEventSynopsis',
+            style: const TextStyle(
+              fontWeight: FontWeight.normal,
+              fontSize: 16.0,
+              color: Colors.black87,
+            ),
+            softWrap: true,
+            textAlign: TextAlign.justify,
           ),
         ),
       ],

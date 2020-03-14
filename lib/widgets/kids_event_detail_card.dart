@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 
 class KidsEventDetailCard extends StatelessWidget {
-  const KidsEventDetailCard({
-    Key key,
-    this.kidsEventPosterUrl,
-    this.kidsEventTitle,
-    this.kidsEventAgeRating,
-    this.kidsEventDuration,
-    this.kidsEventSynopsis,
-  }) : super(key: key);
-
   final String kidsEventPosterUrl;
   final String kidsEventTitle;
   final String kidsEventAgeRating;
   final String kidsEventDuration;
   final String kidsEventSynopsis;
+
+  const KidsEventDetailCard({
+    Key key,
+    @required this.kidsEventPosterUrl,
+    @required this.kidsEventTitle,
+    @required this.kidsEventAgeRating,
+    @required this.kidsEventDuration,
+    @required this.kidsEventSynopsis,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,11 +28,11 @@ class KidsEventDetailCard extends StatelessWidget {
             children: <Widget>[
               Text(
                 '$kidsEventTitle',
-                maxLines: 3,
+                maxLines: 2,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(
+                style: const TextStyle(
                   fontWeight: FontWeight.w900,
-                  fontSize: 20.0,
+                  fontSize: 18.0,
                 ),
               ),
               const Divider(),
@@ -41,7 +41,7 @@ class KidsEventDetailCard extends StatelessWidget {
                 '· $kidsEventAgeRating+',
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(
+                style: const TextStyle(
                   fontWeight: FontWeight.normal,
                   fontSize: 16.0,
                   color: Colors.black54,
@@ -60,7 +60,7 @@ class KidsEventDetailCard extends StatelessWidget {
                     ' $kidsEventDuration',
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontWeight: FontWeight.normal,
                       fontSize: 16.0,
                       color: Colors.black54,
@@ -72,23 +72,16 @@ class KidsEventDetailCard extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(8.0, 32.0, 8.0, 8.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              const Padding(padding: EdgeInsets.only(bottom: 20.0)),
-              Text(
-                '   $kidsEventSynopsis',
-                style: TextStyle(
-                  fontWeight: FontWeight.normal,
-                  fontSize: 16.0,
-                  color: Colors.black87,
-                ),
-                softWrap: true,
-                textAlign: TextAlign.justify,
-              ),
-              const Divider(),
-            ],
+          padding: const EdgeInsets.fromLTRB(24.0, 42.0, 24.0, 8.0),
+          child: Text(
+            '   $kidsEventSynopsis',
+            style: const TextStyle(
+              fontWeight: FontWeight.normal,
+              fontSize: 16.0,
+              color: Colors.black87,
+            ),
+            softWrap: true,
+            textAlign: TextAlign.justify,
           ),
         ),
       ],

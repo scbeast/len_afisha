@@ -12,14 +12,14 @@ class RdkEventsSessionsListItem extends StatelessWidget {
 
   const RdkEventsSessionsListItem(
       {Key key,
-      this.rdkEventTitle,
-      this.rdkEventDuration,
-      this.rdkEventAgeRating,
-      this.rdkEventDay,
-      this.rdkEventWeekDay,
-      this.rdkEventMonth,
-      this.rdkEventTime,
-      this.rdkEventPosterUrl})
+      @required this.rdkEventTitle,
+      @required this.rdkEventDuration,
+      @required this.rdkEventAgeRating,
+      @required this.rdkEventDay,
+      @required this.rdkEventWeekDay,
+      @required this.rdkEventMonth,
+      @required this.rdkEventTime,
+      @required this.rdkEventPosterUrl})
       : super(key: key);
 
   @override
@@ -37,40 +37,10 @@ class RdkEventsSessionsListItem extends StatelessWidget {
                 elevation: 5.0,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(5.0),
-                  child: Stack(
-                    children: [
-                      FadeInImage.assetNetwork(
-                        placeholder: 'assets/images/wait-poster.gif',
-                        image: rdkEventPosterUrl,
-                        width: 100.0,
-                      ),
-                      Opacity(
-                        opacity: 0.8,
-                        child: Container(
-                          width: 100.0,
-                          child: Align(
-                            alignment: Alignment.bottomCenter,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                    colors: [Colors.white, Colors.blue],
-                                    begin: Alignment.topCenter,
-                                    end: Alignment.bottomCenter),
-                              ),
-                              alignment: Alignment.center,
-                              width: 105.0,
-                              height: 20.0,
-                              child: const Text(
-                                'рдк',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 15.0),
-                              ),
-                            ),
-                          ),
-                        ),
-                      )
-                    ],
+                  child: FadeInImage.assetNetwork(
+                    placeholder: 'assets/images/wait-poster.gif',
+                    image: rdkEventPosterUrl,
+                    width: 100.0,
                   ),
                 ),
               ),
@@ -117,7 +87,7 @@ class RdkEventsSessionsListItem extends StatelessWidget {
                               fontSize: 14.0,
                             ),
                           ),
-                          const Divider(),
+                          const Divider(color: Colors.blue),
                           const Padding(padding: EdgeInsets.only(bottom: 2.0)),
                           Text(
                             ' · $rdkEventAgeRating+',

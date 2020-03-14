@@ -26,7 +26,8 @@ class MovieDetailPageSliverAppBar extends SliverPersistentHeaderDelegate {
           child: Opacity(
             opacity: shrinkOffset / expandedHeight,
             child: Text(
-              movie.title.toLowerCase(),
+              movie.title,
+              textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
@@ -44,9 +45,24 @@ class MovieDetailPageSliverAppBar extends SliverPersistentHeaderDelegate {
               elevation: 10,
               child: SizedBox(
                 height: expandedHeight,
-                // width: MediaQuery.of(context).size.width / 2,
                 child: InkWell(
                   child: Hero(
+                    flightShuttleBuilder: (
+                      BuildContext flightContext,
+                      Animation<double> animation,
+                      HeroFlightDirection flightDirection,
+                      BuildContext fromHeroContext,
+                      BuildContext toHeroContext,
+                    ) {
+                      final Hero toHero = toHeroContext.widget as Hero;
+                      return RotationTransition(
+                        turns: animation,
+                        child: toHero.child,
+                      );
+                    },
+                    placeholderBuilder: (context, _, child) {
+                      return Opacity(opacity: 0.5, child: child);
+                    },
                     tag: 'poster',
                     child: Image.network(movie.posterUrl),
                   ),

@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 class MovieListTile extends StatelessWidget {
   MovieListTile(
       {Key key,
-      this.movieDay,
-      this.movieMonth,
-      this.movieDayOfWeek,
-      this.movieTime,
-      this.movieTitle,
-      this.movieAgeRating,
-      this.movieDuration,
-      this.movieGenre,
-      this.movieYear,
-      this.movieCountry})
+      @required this.movieDay,
+      @required this.movieMonth,
+      @required this.movieDayOfWeek,
+      @required this.movieTime,
+      @required this.movieTitle,
+      @required this.movieAgeRating,
+      @required this.movieDuration,
+      @required this.movieGenre,
+      @required this.movieYear,
+      @required this.movieCountry})
       : super(key: key);
 
   final String movieDay;
@@ -67,7 +67,7 @@ class MovieListTile extends StatelessWidget {
                   fontSize: 14.0,
                 ),
               ),
-              const Divider(),
+              const Divider(color: Colors.blue),
               Text(
                 ' · $movieCountry',
                 maxLines: 1,
