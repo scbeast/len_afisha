@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class MovieDetailCard extends StatelessWidget {
-  final String moviePosterUrl;
   final String movieTitle;
   final String movieGenre;
   final String movieCountry;
@@ -15,22 +14,21 @@ class MovieDetailCard extends StatelessWidget {
   final String movieKpRating;
   final String movieImdbRating;
 
-  const MovieDetailCard(
-      {Key key,
-      @required this.moviePosterUrl,
-      @required this.movieTitle,
-      @required this.movieGenre,
-      @required this.movieCountry,
-      @required this.movieYear,
-      @required this.movieAgeRating,
-      @required this.movieDuration,
-      @required this.movieKpRatingUrl,
-      @required this.movieSynopsis,
-      @required this.movieImdbRating,
-      @required this.movieImdbRatingNumberOfVotes,
-      @required this.movieKpRating,
-      @required this.movieKpRatingNumberOfVotes})
-      : super(key: key);
+  const MovieDetailCard({
+    Key key,
+    @required this.movieTitle,
+    @required this.movieGenre,
+    @required this.movieCountry,
+    @required this.movieYear,
+    @required this.movieAgeRating,
+    @required this.movieDuration,
+    @required this.movieKpRatingUrl,
+    @required this.movieSynopsis,
+    @required this.movieImdbRating,
+    @required this.movieImdbRatingNumberOfVotes,
+    @required this.movieKpRating,
+    @required this.movieKpRatingNumberOfVotes,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +42,7 @@ class MovieDetailCard extends StatelessWidget {
             children: <Widget>[
               Text(
                 '$movieTitle',
-                maxLines: 1,
+                maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 style: const TextStyle(
                   fontWeight: FontWeight.w900,

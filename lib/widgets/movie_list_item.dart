@@ -134,17 +134,17 @@ class MovieListTile extends StatelessWidget {
 class MovieListItem extends StatelessWidget {
   MovieListItem({
     Key key,
-    this.posterUrl,
-    this.movieDay,
-    this.movieMonth,
-    this.movieTime,
-    this.movieDayOfWeek,
-    this.movieTitle,
-    this.movieAgeRating,
-    this.movieDuration,
-    this.movieGenre,
-    this.movieYear,
-    this.movieCountry,
+    @required this.posterUrl,
+    @required this.movieDay,
+    @required this.movieMonth,
+    @required this.movieTime,
+    @required this.movieDayOfWeek,
+    @required this.movieTitle,
+    @required this.movieAgeRating,
+    @required this.movieDuration,
+    @required this.movieGenre,
+    @required this.movieYear,
+    @required this.movieCountry,
   }) : super(key: key);
 
   final String posterUrl;

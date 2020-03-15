@@ -9,17 +9,19 @@ class MovieDetailPage extends StatelessWidget {
 
   Widget build(BuildContext context) {
     final Movie _movie = ModalRoute.of(context).settings.arguments as Movie;
+
     return Material(
       child: CustomScrollView(
         slivers: [
           SliverPersistentHeader(
             delegate: MovieDetailPageSliverAppBar(
-                expandedHeight: 200, movie: _movie),
+              expandedHeight: 200,
+              movie: _movie,
+            ),
             pinned: true,
           ),
           SliverToBoxAdapter(
             child: MovieDetailCard(
-              moviePosterUrl: _movie.posterUrl,
               movieTitle: _movie.title,
               movieGenre: _movie.genre,
               movieCountry: _movie.country,

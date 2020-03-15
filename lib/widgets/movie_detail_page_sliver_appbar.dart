@@ -6,8 +6,10 @@ class MovieDetailPageSliverAppBar extends SliverPersistentHeaderDelegate {
   final double expandedHeight;
   final Movie movie;
 
-  MovieDetailPageSliverAppBar(
-      {@required this.expandedHeight, @required this.movie});
+  MovieDetailPageSliverAppBar({
+    @required this.expandedHeight,
+    @required this.movie,
+  });
 
   @override
   Widget build(
@@ -25,24 +27,27 @@ class MovieDetailPageSliverAppBar extends SliverPersistentHeaderDelegate {
         Center(
           child: Opacity(
             opacity: shrinkOffset / expandedHeight,
-            child: Text(
-              movie.title,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 26,
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(40.0, 0.0, 8.0, 0.0),
+              child: Text(
+                movie.title,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 26,
+                ),
               ),
             ),
           ),
         ),
         Positioned(
-          top: expandedHeight / 1.5,
+          top: expandedHeight / 1.5 - shrinkOffset,
           left: 8,
           child: Opacity(
             opacity: (1 - shrinkOffset / expandedHeight),
             child: Card(
-              elevation: 10,
+              elevation: 8,
               child: SizedBox(
                 height: expandedHeight,
                 child: InkWell(

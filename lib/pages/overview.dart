@@ -70,10 +70,11 @@ class BuildBottomAppBar extends StatelessWidget {
         padding: const EdgeInsets.fromLTRB(8.0, 2.0, 8.0, 2.0),
         child: FlatButton(
           shape: RoundedRectangleBorder(
-            side: BorderSide(style: BorderStyle.solid, color: Colors.blue),
+            side:
+                const BorderSide(style: BorderStyle.solid, color: Colors.blue),
             borderRadius: BorderRadius.circular(20.0),
           ),
-          child: Text(
+          child: const Text(
             'далее',
             style: TextStyle(
               color: Colors.blue,
