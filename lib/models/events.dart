@@ -183,7 +183,7 @@ class EventsData with ChangeNotifier {
 
 // Получаем данные с сервера
   Future<void> fetchEventsData() async {
-    const String url = 'https://api.npoint.io/677b0e848d129c690d14';
+    const String url = 'https://api.npoint.io/755739f726d7e02d066d';
     if (_afterInit) {
       iAmBusyNow = true;
       notifyListeners();
