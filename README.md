@@ -18,3 +18,5 @@
 · Instagram: [@leninskoerdk](https://www.instagram.com/leninskoerdk/)
 
 · www: [http://www.leninskoerdk.ru](http://www.leninskoerdk.ru/)
+
+· разработка: [scbeast](mailto:scbeast555655@gmail.com)
