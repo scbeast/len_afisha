@@ -13,9 +13,8 @@ class InformationString extends StatelessWidget {
   final String caption;
   final String launchArgument;
 
-  Future<bool> _launchAction() async {
+  Future<void> _launchAction() async {
     await launch(launchArgument);
-    return true;
   }
 
   @override
@@ -24,14 +23,14 @@ class InformationString extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Text(
-          '$title',
+          title,
           style: TextStyle(
             fontWeight: FontWeight.bold,
           ),
         ),
         GestureDetector(
           child: Text(
-            '$caption',
+            caption,
             style: TextStyle(
               fontWeight: FontWeight.bold,
               color: Colors.blue,

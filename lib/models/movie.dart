@@ -40,20 +40,4 @@ class Movie {
     ratingUrl = json['ratingUrl'] as String;
     rating = json['rating'] as String;
   }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    data['id'] = id;
-    data['title'] = title;
-    data['country'] = country;
-    data['year'] = year;
-    data['genre'] = genre;
-    data['synopsis'] = synopsis;
-    data['duration'] = duration;
-    data['age'] = ageRating;
-    data['posterUrl'] = posterUrl;
-    data['ratingUrl'] = ratingUrl;
-    data['rating'] = rating;
-    return data;
-  }
 }

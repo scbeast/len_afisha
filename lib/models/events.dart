@@ -27,7 +27,7 @@ class EventsData with ChangeNotifier {
 
   void addMoviesFromJson(Map<String, dynamic> json) {
     if (json['movies'] != null) {
-      movies = List<Movie>();
+      movies = <Movie>[];
       json['movies'].forEach(
         (v) {
           movies.add(Movie.fromJson(v as Map<String, dynamic>));
@@ -38,7 +38,7 @@ class EventsData with ChangeNotifier {
 
   void addRdkEventsFromJson(Map<String, dynamic> json) {
     if (json['rdkEvents'] != null) {
-      rdkEvents = List<RdkEvent>();
+      rdkEvents = <RdkEvent>[];
       json['rdkEvents'].forEach(
         (v) {
           rdkEvents.add(RdkEvent.fromJson(v as Map<String, dynamic>));
@@ -49,7 +49,7 @@ class EventsData with ChangeNotifier {
 
   void addKidsEventsFromJson(Map<String, dynamic> json) {
     if (json['kidsEvents'] != null) {
-      kidsEvents = List<KidsEvent>();
+      kidsEvents = <KidsEvent>[];
       json['kidsEvents'].forEach(
         (v) {
           kidsEvents.add(KidsEvent.fromJson(v as Map<String, dynamic>));
@@ -60,7 +60,7 @@ class EventsData with ChangeNotifier {
 
   void addAnnouncementsFromJson(Map<String, dynamic> json) {
     if (json['announcements'] != null) {
-      announcements = List<Announcement>();
+      announcements = <Announcement>[];
       json['announcements'].forEach(
         (v) {
           announcements.add(Announcement.fromJson(v as Map<String, dynamic>));
@@ -71,7 +71,7 @@ class EventsData with ChangeNotifier {
 
   void addMoviesSessionsFromJson(Map<String, dynamic> json) {
     if (json['moviesSessions'] != null) {
-      moviesSessions = List<MovieSession>();
+      moviesSessions = <MovieSession>[];
       json['moviesSessions'].forEach(
         (v) {
           if (MovieSession.fromJson(v as Map<String, dynamic>)
@@ -87,7 +87,7 @@ class EventsData with ChangeNotifier {
 
   void addKidsEventsSessionsFromJson(Map<String, dynamic> json) {
     if (json['kidsSessions'] != null) {
-      kidsEventsSessions = List<KidsEventSession>();
+      kidsEventsSessions = <KidsEventSession>[];
       json['kidsSessions'].forEach(
         (v) {
           if (KidsEventSession.fromJson(v as Map<String, dynamic>)
@@ -103,7 +103,7 @@ class EventsData with ChangeNotifier {
 
   void addRdkEventsSessionsFromJson(Map<String, dynamic> json) {
     if (json['rdkSessions'] != null) {
-      rdkEventsSessions = List<RdkEventSession>();
+      rdkEventsSessions = <RdkEventSession>[];
       json['rdkSessions'].forEach(
         (v) {
           if (RdkEventSession.fromJson(v as Map<String, dynamic>)

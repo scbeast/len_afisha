@@ -19,4 +19,4 @@
 
 · www: [http://www.leninskoerdk.ru](http://www.leninskoerdk.ru/)
 
-· разработка: [scbeast](mailto:scbeast555655@gmail.com)
+· Разработка: [scbeast](mailto:scbeast555655@gmail.com)

@@ -7,6 +7,7 @@ class MovieDetailPage extends StatelessWidget {
   static const routName = 'movie-detail-page';
   const MovieDetailPage({Key key}) : super(key: key);
 
+  @override
   Widget build(BuildContext context) {
     final Movie _movie = ModalRoute.of(context).settings.arguments as Movie;
 
