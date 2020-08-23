@@ -35,7 +35,7 @@ class BuildAnnouncementsListView extends StatelessWidget {
     final EventsData _eventsData = Provider.of<EventsData>(context);
     final List<Announcement> _announcements = _eventsData.announcements;
     final int _listViewLength = _announcements.length;
-    if (_listViewLength == 0) {
+    if (_announcements.isEmpty) {
       return const EmptyEventsListWidget();
     } else {
       return Scaffold(

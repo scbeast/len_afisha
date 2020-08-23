@@ -1,5 +1,5 @@
 name: len_afisha
-description: A new Flutter project.
+description: Main events held by the House of Culture.
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -25,6 +25,7 @@ dependencies:
   xml2json: ^4.1.1
   provider: ^4.0.3
   page_transition: ^1.1.5
+  flutter_staggered_animations: ^0.1.2
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

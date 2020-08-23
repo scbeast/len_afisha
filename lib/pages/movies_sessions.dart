@@ -7,6 +7,7 @@ import 'package:len_afisha/widgets/i_am_busy_now.dart';
 import 'package:len_afisha/widgets/movie_list_item.dart';
 import 'package:len_afisha/widgets/oops_dialog.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 class MoviesSessionsPage extends StatelessWidget {
   static const routName = 'sessions-page';
@@ -38,37 +39,50 @@ class BuildMoviesSessionsListView extends StatelessWidget {
     if (_sessions.isEmpty) {
       return const EmptyEventsListWidget();
     } else {
-      return ListView.builder(
-        itemCount: _sessions.length,
-        itemBuilder: (BuildContext context, int index) {
-          final _movie = _eventsData.findMovieById(_sessions[index].id);
-          return GestureDetector(
-            child: Card(
-              elevation: 5.0,
-              child: MovieListItem(
-                posterUrl: _movie.posterUrl,
-                movieTitle: _movie.title,
-                movieYear: _movie.year,
-                movieCountry: _movie.country,
-                movieDay: _sessions[index].dateTime.day.toString(),
-                movieMonth: _sessions[index].month,
-                movieDayOfWeek: _sessions[index].dayOfWeek,
-                movieTime:
-                    _sessions[index].dateTime.toString().substring(11, 16),
-                movieDuration: _movie.duration,
-                movieGenre: _movie.genre,
-                movieAgeRating: _movie.ageRating.toString(),
+      return AnimationLimiter(
+        child: ListView.builder(
+          itemCount: _sessions.length,
+          itemBuilder: (BuildContext context, int index) {
+            final _movie = _eventsData.findMovieById(_sessions[index].id);
+            return AnimationConfiguration.staggeredList(
+              position: index,
+              duration: const Duration(milliseconds: 600),
+              child: SlideAnimation(
+                verticalOffset: 50.0,
+                child: FadeInAnimation(
+                  child: GestureDetector(
+                    child: Card(
+                      elevation: 5.0,
+                      child: MovieListItem(
+                        posterUrl: _movie.posterUrl,
+                        movieTitle: _movie.title,
+                        movieYear: _movie.year,
+                        movieCountry: _movie.country,
+                        movieDay: _sessions[index].dateTime.day.toString(),
+                        movieMonth: _sessions[index].month,
+                        movieDayOfWeek: _sessions[index].dayOfWeek,
+                        movieTime: _sessions[index]
+                            .dateTime
+                            .toString()
+                            .substring(11, 16),
+                        movieDuration: _movie.duration,
+                        movieGenre: _movie.genre,
+                        movieAgeRating: _movie.ageRating.toString(),
+                      ),
+                    ),
+                    onTap: () {
+                      Navigator.pushNamed(
+                        context,
+                        MovieDetailPage.routName,
+                        arguments: _movie,
+                      );
+                    },
+                  ),
+                ),
               ),
-            ),
-            onTap: () {
-              Navigator.pushNamed(
-                context,
-                MovieDetailPage.routName,
-                arguments: _movie,
-              );
-            },
-          );
-        },
+            );
+          },
+        ),
       );
     }
   }
