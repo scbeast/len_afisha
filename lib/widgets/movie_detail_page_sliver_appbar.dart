@@ -32,7 +32,7 @@ class MovieDetailPageSliverAppBar extends SliverPersistentHeaderDelegate {
               child: Text(
                 movie.title,
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                   fontSize: 26,
@@ -87,7 +87,7 @@ class MovieDetailPageSliverAppBar extends SliverPersistentHeaderDelegate {
           top: 4.0,
           left: 3.0,
           child: IconButton(
-              icon: Icon(
+              icon: const Icon(
                 Icons.arrow_back,
                 color: Colors.white,
               ),

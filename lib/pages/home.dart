@@ -59,17 +59,17 @@ class _HomePageState extends State<HomePage>
       bottomNavigationBar: BottomNavigationBar(
         showUnselectedLabels: false,
         items: [
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.movie),
-            title: const Text('кино'),
+            title: Text('кино'),
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.child_care),
-            title: const Text('детям'),
+            title: Text('детям'),
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.account_balance),
-            title: const Text('рдк'),
+            title: Text('рдк'),
           ),
         ],
         onTap: _onItemTapped,

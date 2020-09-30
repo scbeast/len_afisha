@@ -26,7 +26,7 @@ class RdkEventDetailPageSliverAppBar extends SliverPersistentHeaderDelegate {
             opacity: shrinkOffset / expandedHeight,
             child: Text(
               rdkEvent.title,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
                 fontSize: 26,
@@ -35,7 +35,7 @@ class RdkEventDetailPageSliverAppBar extends SliverPersistentHeaderDelegate {
           ),
         ),
         Positioned(
-          top: expandedHeight / 1.5- shrinkOffset,
+          top: expandedHeight / 1.5 - shrinkOffset,
           left: 8,
           child: Opacity(
             opacity: (1 - shrinkOffset / expandedHeight),
@@ -52,7 +52,7 @@ class RdkEventDetailPageSliverAppBar extends SliverPersistentHeaderDelegate {
           top: 4.0,
           left: 3.0,
           child: IconButton(
-              icon: Icon(
+              icon: const Icon(
                 Icons.arrow_back,
                 color: Colors.white,
               ),

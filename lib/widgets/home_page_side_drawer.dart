@@ -13,8 +13,8 @@ class HomePageSideDrawer extends StatelessWidget {
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
-          DrawerHeader(
-            decoration: const BoxDecoration(
+          const DrawerHeader(
+            decoration: BoxDecoration(
               color: Colors.blue,
             ),
             child: Text(
@@ -26,7 +26,7 @@ class HomePageSideDrawer extends StatelessWidget {
             ),
           ),
           ListTile(
-            leading: Icon(Icons.update),
+            leading: const Icon(Icons.update),
             title: const Text(
               'обновить',
               style: TextStyle(
@@ -40,7 +40,7 @@ class HomePageSideDrawer extends StatelessWidget {
           ),
           const Divider(),
           ListTile(
-            leading: Icon(Icons.library_books),
+            leading: const Icon(Icons.library_books),
             title: const Text(
               'объявления',
               style: TextStyle(
@@ -53,7 +53,7 @@ class HomePageSideDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.info),
+            leading: const Icon(Icons.info),
             title: const Text(
               'информация',
               style: TextStyle(

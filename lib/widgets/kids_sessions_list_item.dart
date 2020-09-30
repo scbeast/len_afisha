@@ -100,7 +100,7 @@ class KidsSessionsListItem extends StatelessWidget {
                           ),
                           Row(
                             children: <Widget>[
-                              Icon(
+                              const Icon(
                                 Icons.av_timer,
                                 size: 12.0,
                                 color: Colors.black54,

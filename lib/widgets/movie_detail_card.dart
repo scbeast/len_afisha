@@ -106,7 +106,7 @@ class MovieDetailCard extends StatelessWidget {
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Icon(
+                  const Icon(
                     Icons.av_timer,
                     size: 16.0,
                     color: Colors.black54,

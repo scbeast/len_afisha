@@ -26,7 +26,7 @@ class KidsEventDetailPageSliverAppBar extends SliverPersistentHeaderDelegate {
             opacity: shrinkOffset / expandedHeight,
             child: Text(
               kidsEvent.title,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
                 fontSize: 26,
@@ -52,7 +52,7 @@ class KidsEventDetailPageSliverAppBar extends SliverPersistentHeaderDelegate {
           top: 4.0,
           left: 3.0,
           child: IconButton(
-              icon: Icon(
+              icon: const Icon(
                 Icons.arrow_back,
                 color: Colors.white,
               ),
