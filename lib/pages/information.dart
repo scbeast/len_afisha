@@ -40,14 +40,14 @@ class InformationPage extends StatelessWidget {
               ),
               const Padding(padding: EdgeInsets.only(bottom: 8.0)),
               const InformationString(
-                  title: '· Адрес: ',
+                  title: '· адрес: ',
                   caption: 'с. Ленинское, ул. Ленина 22',
                   launchArgument:
                       'https://www.openstreetmap.org/way/478626266#map=18/47.93323/132.62089'),
               const Padding(padding: EdgeInsets.only(bottom: 6.0)),
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 const InformationString(
-                    title: '· Телефон: ',
+                    title: '· телефон: ',
                     caption: '(42663) 22-6-11',
                     launchArgument: 'tel:+7 426 632 26 11'),
                 const InformationString(
@@ -62,7 +62,7 @@ class InformationPage extends StatelessWidget {
                   launchArgument: 'mailto:rdk_len@post.eao.ru'),
               const Padding(padding: EdgeInsets.only(bottom: 6.0)),
               const InformationString(
-                  title: '· Instagram: ',
+                  title: '· instagram: ',
                   caption: '@leninskoerdk',
                   launchArgument: 'https://www.instagram.com/leninskoerdk/'),
               const Padding(padding: EdgeInsets.only(bottom: 6.0)),
