@@ -61,15 +61,15 @@ class _HomePageState extends State<HomePage>
         items: [
           const BottomNavigationBarItem(
             icon: Icon(Icons.movie),
-            title: Text('кино'),
+            label: 'кино',
           ),
           const BottomNavigationBarItem(
             icon: Icon(Icons.child_care),
-            title: Text('детям'),
+            label: 'детям',
           ),
           const BottomNavigationBarItem(
             icon: Icon(Icons.account_balance),
-            title: Text('рдк'),
+            label: 'рдк',
           ),
         ],
         onTap: _onItemTapped,
